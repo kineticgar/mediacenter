@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package>
+  <name>mediacenter</name>
+  <version>0.0.1</version>
+  <description>Interact with media centers on the network</description>
+  <maintainer email="kineticgar@gmail.com">Garrett Brown</maintainer>
+  <author email="kineticgar@gmail.com">Garrett Brown</author>
+  <license>MIT</license>
+  <url type="website">https://github.com/garbear/mediacenter</url>
+  <url type="repository">https://github.com/garbear/mediacenter.git</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>libplatform</build_depend>
+  <build_depend>message_generation</build_depend>
+  <run_depend>message_runtime</run_depend>
+</package>
+
