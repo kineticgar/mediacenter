@@ -21,9 +21,12 @@
  */
 #pragma once
 
-#include "image_transport/image_transport.h"
+//#include "image_transport/image_transport.h"
+#include "theora_image_transport/Packet.h"
 #include "ros/node_handle.h"
 #include "ros/publisher.h"
+#include "ros/subscriber.h"
+#include "sensor_msgs/Image.h"
 
 class StreamingNode
 {
@@ -34,12 +37,15 @@ public:
   bool Initialize(void);
   void Deinitialize(void) { }
 
-  bool OK(void) const { return true; }
+  bool OK(void) const { return m_node.ok(); }
 
+  void ReceivePacket(const theora_image_transport::PacketConstPtr& packet);
   void PublishJoystick(void);
 
 private:
   ros::NodeHandle                 m_node;
-  image_transport::ImageTransport m_transport;
+  //image_transport::ImageTransport m_transport;
   ros::Publisher                  m_publisher;
+  //image_transport::Subscriber     m_subscriber;
+  ros::Subscriber                 m_subscriber;
 };

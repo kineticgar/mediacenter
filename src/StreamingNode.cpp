@@ -25,15 +25,28 @@
 #include "sensor_msgs/Joy.h"
 
 StreamingNode::StreamingNode(void) :
-  m_node(),
-  m_transport(m_node)
+  m_node()/*,
+  m_transport(m_node)*/
 {
+  /*
+  m_subscriber = m_transport.subscribe("video",
+                                       1,
+                                       &StreamingNode::ReceiveImage,
+                                       this,
+                                       image_transport::TransportHints("theora"));
+  */
+  m_subscriber = m_node.subscribe("stream", 10, &StreamingNode::ReceivePacket, this);
 }
 
 bool StreamingNode::Initialize(void)
 {
   m_publisher = m_node.advertise<sensor_msgs::Joy>("joy", 1000);
   return true;
+}
+
+void StreamingNode::ReceivePacket(const theora_image_transport::PacketConstPtr& packet)
+{
+
 }
 
 void StreamingNode::PublishJoystick(void)
